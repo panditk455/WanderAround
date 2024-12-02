@@ -2,12 +2,7 @@ package hu.bme.aut.httpdemo.ui.screen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
@@ -25,7 +20,10 @@ import hu.bme.aut.httpdemo.R
 
 @Composable
 fun MainScreen(
-    onMoneyAPISelected: () -> Unit
+    onTripsSelected: () -> Unit,
+    onExpensesSelected: () -> Unit,
+    onPhotosSelected: () -> Unit,
+    onMapSelected: () -> Unit
 ) {
     Box(
         modifier = Modifier
@@ -38,17 +36,58 @@ fun MainScreen(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            HeaderImage()
+            HeaderImage() // Display the header image
 
-            // Updated Button color using ButtonDefaults
+            Spacer(modifier = Modifier.height(16.dp))
+
             Button(
-                onClick = { onMoneyAPISelected() },
+                onClick = { onTripsSelected() },
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color(0xFF00008B),
                     contentColor = Color.White
-                )
+                ),
+                modifier = Modifier.fillMaxWidth(0.8f)
             ) {
-                Text(text = "View Weather Conditions")
+                Text(text = "Manage Trips")
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Button(
+                onClick = { onExpensesSelected() },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFF228B22),
+                    contentColor = Color.White
+                ),
+                modifier = Modifier.fillMaxWidth(0.8f)
+            ) {
+                Text(text = "Track Expenses")
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Button(
+                onClick = { onPhotosSelected() },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFFFFA500),
+                    contentColor = Color.White
+                ),
+                modifier = Modifier.fillMaxWidth(0.8f)
+            ) {
+                Text(text = "View Photos")
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Button(
+                onClick = { onMapSelected() },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFF8A2BE2),
+                    contentColor = Color.White
+                ),
+                modifier = Modifier.fillMaxWidth(0.8f)
+            ) {
+                Text(text = "Explore Map")
             }
         }
     }
@@ -56,8 +95,7 @@ fun MainScreen(
 
 @Composable
 fun HeaderImage() {
-
-    val painter = painterResource(id = R.drawable.logo)
+    val painter = painterResource(id = R.drawable.logo) // Correct drawable reference
     val imageModifier = Modifier
         .fillMaxWidth()
         .height(200.dp)

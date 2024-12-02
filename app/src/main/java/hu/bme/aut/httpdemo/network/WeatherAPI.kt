@@ -1,6 +1,6 @@
 package hu.bme.aut.httpdemo.network
 
-import hu.bme.aut.httpdemo.data.weather.WeatherResult
+
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -19,6 +19,6 @@ interface WeatherAPI {
         @Query("q") city: String,           // City name
         @Query("appid") apiKey: String,    // API key
         @Query("units") units: String = "metric"
-    ): WeatherResult
+    )
 
 }
